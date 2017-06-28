@@ -1,21 +1,20 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(parameter_pa)
 
-# cmake_modules for using "Eigen"-library
-#   But hydro can't handle it directly
-#   therefore it is only mentioned in the "package.xml" !
 find_package(catkin REQUIRED COMPONENTS
-#   cmake_modules
+  cmake_modules
   roscpp
   roslib
 )
+
+find_package(Eigen3 REQUIRED)
 
 catkin_package(
   INCLUDE_DIRS
     include
 
   CATKIN_DEPENDS
-#     cmake_modules
+    cmake_modules
     roscpp
     roslib
 
@@ -26,6 +25,7 @@ catkin_package(
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
+  ${Eigen_INCLUDE_DIRS}
 )
 
 add_library(${PROJECT_NAME}
