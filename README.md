@@ -36,19 +36,11 @@ Source code at github:
 
 > https://github.com/peterweissig/ros_parameter
 
-## Dokumentation at ros:
+## ROS Build-Status and Documentation
 
-> http://docs.ros.org/indigo/api/parameter_pa/html/index.html
-> http://docs.ros.org/jade/api/parameter_pa/html/index.html
-> http://docs.ros.org/kinetic/api/parameter_pa/html/index.html
-> http://docs.ros.org/lunar/api/parameter_pa/html/index.html
-
-
-## Build-Status
-
-ROS-Distribution | Status
------------------|-------------
-Indigo | [![Build Status](http://build.ros.org/buildStatus/icon?job=Idev__parameter_pa__ubuntu_trusty_amd64)](http://build.ros.org/job/Idev__parameter_pa__ubuntu_trusty_amd64/)
-Jade | [![Build Status](http://build.ros.org/buildStatus/icon?job=Jdev__parameter_pa__ubuntu_trusty_amd64)](http://build.ros.org/job/Jdev__parameter_pa__ubuntu_trusty_amd64/)
-Kinetic | [![Build Status](http://build.ros.org/buildStatus/icon?job=Kdev__parameter_pa__ubuntu_xenial_amd64)](http://build.ros.org/job/Kdev__parameter_pa__ubuntu_xenial_amd64/)
-Lunar | [![Build Status](http://build.ros.org/buildStatus/icon?job=Ldev__parameter_pa__ubuntu_xenial_amd64)](http://build.ros.org/job/Ldev__parameter_pa__ubuntu_xenial_amd64/)
+ROS-Distribution | Build-Status | Documentation      
+-----------------|--------------|---------------
+Indigo | [![Build Status](http://build.ros.org/buildStatus/icon?job=Idev__parameter_pa__ubuntu_trusty_amd64)](http://build.ros.org/job/Idev__parameter_pa__ubuntu_trusty_amd64/) | [docs.ros.org](http://docs.ros.org/indigo/api/parameter_pa/html/index.html)
+Jade | [![Build Status](http://build.ros.org/buildStatus/icon?job=Jdev__parameter_pa__ubuntu_trusty_amd64)](http://build.ros.org/job/Jdev__parameter_pa__ubuntu_trusty_amd64/) | [docs.ros.org](http://docs.ros.org/jade/api/parameter_pa/html/index.html)
+Kinetic | [![Build Status](http://build.ros.org/buildStatus/icon?job=Kdev__parameter_pa__ubuntu_xenial_amd64)](http://build.ros.org/job/Kdev__parameter_pa__ubuntu_xenial_amd64/) | [docs.ros.org](http://docs.ros.org/kinetic/api/parameter_pa/html/index.html)
+Lunar | [![Build Status](http://build.ros.org/buildStatus/icon?job=Ldev__parameter_pa__ubuntu_xenial_amd64)](http://build.ros.org/job/Ldev__parameter_pa__ubuntu_xenial_amd64/) | [docs.ros.org](http://docs.ros.org/lunar/api/parameter_pa/html/index.html)
