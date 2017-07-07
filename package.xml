@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>parameter_pa</name>
-  <version>0.0.1</version>
-  <description>The proaut_parameter package</description>
+  <version>1.0.0</version>
+  <description>ProAut parameter package</description>
 
-  <maintainer email="wepet@hrz.tu-chemnitz.de">wepet</maintainer>
+  <maintainer email="wepet@hrz.tu-chemnitz.de">Peter Weissig</maintainer>
 
   <license>BSD</license>
 
@@ -14,6 +14,7 @@
   <depend>roslib</depend>
   <depend>cmake_modules</depend>
   <depend>eigen</depend>
+
 
   <doc_depend>doxygen</doc_depend>
 
