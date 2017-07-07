@@ -1,23 +1,20 @@
 <?xml version="1.0"?>
-<package>
+<package format="2">
   <name>parameter_pa</name>
   <version>0.0.1</version>
   <description>The proaut_parameter package</description>
 
   <maintainer email="wepet@hrz.tu-chemnitz.de">wepet</maintainer>
 
-  <license>other</license>
+  <license>BSD</license>
 
   <buildtool_depend>catkin</buildtool_depend>
 
-  <build_depend>roscpp</build_depend>
-  <build_depend>roslib</build_depend>
-  <build_depend>cmake_modules</build_depend>
-  <build_depend>eigen</build_depend>
+  <depend>roscpp</depend>
+  <depend>roslib</depend>
+  <depend>cmake_modules</depend>
+  <depend>eigen</depend>
 
-  <run_depend>roscpp</run_depend>
-  <run_depend>roslib</run_depend>
-  <run_depend>cmake_modules</run_depend>
-  <run_depend>eigen</run_depend>
+  <doc_depend>doxygen</doc_depend>
 
 </package>
