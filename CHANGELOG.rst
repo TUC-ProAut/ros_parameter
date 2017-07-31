@@ -4,6 +4,13 @@ Changelog for package parameter_pa
 
 Forthcoming
 -----------
+* updated year within license
+* updated version number
+* added install target to CMakeLists.txt
+* Contributors: Peter Weissig
+
+1.0.0
+-----
 * updated package.xml to format version 2
 * updated doxygen.h and README.md
 * updated CMakeLists.txt and package.xml
