@@ -2,6 +2,12 @@
 Changelog for package parameter_pa
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.1.0 (2017-08-01)
+------------------
+* moved header from include/ to include/${project_name}
+  also fixed related paths
+* Contributors: Peter Weissig
+
 1.0.2 (2017-07-31)
 ------------------
 * updated year within license
