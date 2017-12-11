@@ -2,6 +2,18 @@
 Changelog for package parameter_pa
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.2.0 (2017-12-11)
+------------------
+* removed unnecessary headers
+* bugfixed include of xmlrpcpp
+  (before kinetic those files were not related to a package)
+* update README.md
+  bugfixed formatting (missing blanc line before table)
+* added new features ("./" and "../" within ressource names)
+  added visual studio code config files (for ros kinetic)
+  updated documentation
+* Contributors: Peter Weissig
+
 1.1.0 (2017-08-01)
 ------------------
 * moved header from include/ to include/${project_name}
