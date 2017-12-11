@@ -18,8 +18,9 @@ Names are resolved with additional operators.
 For these examples assume that ROS\_NAMESPACE is set to "/name/space" and that the nodes' name is "parameter\_pa\_node"
 
 Regular ressource names (_no change_):
+
 in_string      | out_string     | comment
----------------|----------------|--------
+---------------|----------------|---------
 ressource      | ressource      | relative name
 ressource/     | ressource/     | relative name ending with slash
 ns/ressource   | ns/ressource   | relative name with namespace
@@ -30,8 +31,9 @@ ns/ressource/  | ns/ressource/  | relative name with namespace ending with slash
 /ns/ressource/ | /ns/ressource/ | absolute name with namespace ending with slash
 
 Private ressource names (__~/__):
+
 in_string       | out_string                                    | comment
-----------------|-----------------------------------------------|--------
+----------------|-----------------------------------------------|---------
 ~               | /name/space/parameter\_pa\_node               | private namespace
 ~/              | /name/space/parameter\_pa\_node/              | private namespace ending with slash
 ~/ressource     | /name/space/parameter\_pa\_node/ressource     | private namespace with relative name
@@ -39,8 +41,9 @@ in_string       | out_string                                    | comment
 /abc/~/xyz      | Error                                         | no private namespace within absolute name allowed
 
 Locale ressource names (__./__):
+
 in_string       | out_string                | comment
-----------------|---------------------------|--------
+----------------|---------------------------|---------
 .               | /name/space               | local namespace
 ./              | /name/space/              | local namespace ending with slash
 ./ressource/    | /name/space/ressource/    | local namespace with relative name ending in slash
@@ -48,8 +51,9 @@ in_string       | out_string                | comment
 /abc/./xyz      | /abc/xyz                  | local namespace within absolute name
 
 Previous ressource names (__../__):
+
 in_string       | out_string                | comment
-----------------|---------------------------|--------
+----------------|---------------------------|---------
 ..              | /name                     | previous namespace
 ../             | /name/                    | previous namespace ending with slash
 ../ressource/   | /name/ressource/          | previous namespace with relative name ending in slash
@@ -57,14 +61,16 @@ in_string       | out_string                | comment
 /abc/def/../xyz | /abc/xyz                  | previous namespace within absolute name
 
 Removal of double slashes:
+
 in_string      | out_string     | comment
----------------|----------------|--------
+---------------|----------------|---------
 ressource//    | ressource/     | relative name ending with slash
 //ns/ressource | /ns/ressource  | absolute name with namespace
 
 More examples:
+
 in_string                         | out_string
-----------------------------------|-----------
+----------------------------------|------------
 ~/abc/.//def/../ns//ressource/    | /name/space/parameter\_pa\_node/abc/ns/ressource
 ns//.././..//ressource            | /name/space/ressource
 ../../../../../../ressource/      | /ressource/
