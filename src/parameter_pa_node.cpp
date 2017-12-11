@@ -1,12 +1,12 @@
 /******************************************************************************
 *                                                                             *
-* parameter_pa_ros.h                                                          *
-* ==================                                                          *
+* parameter_pa_node.cpp                                                       *
+* =====================                                                       *
 *                                                                             *
 *******************************************************************************
 *                                                                             *
 * github repository                                                           *
-*   https://github.com/peterweissig/ros_parameter                             *
+*   https://github.com/peterweissig/ros_pcdfilter                             *
 *                                                                             *
 * Chair of Automation Technology, Technische Universität Chemnitz             *
 *   https://www.tu-chemnitz.de/etit/proaut                                    *
@@ -43,81 +43,64 @@
 *                                                                             *
 ******************************************************************************/
 
-#ifndef __PARAMETER_PA_ROS_H
-#define __PARAMETER_PA_ROS_H
-
-// ros headers
-#include <ros/ros.h>
+// local headers
+#include "parameter_pa/parameter_pa_node.h"
+#include "parameter_pa/parameter_pa_ros.h"
 
 // standard headers
 #include <string>
-#include <vector>
+#include <math.h>
 
-#include <eigen3/Eigen/Core>
+//**************************[main]*********************************************
+int main(int argc, char **argv) {
 
-//**************************[cParameterPaRos]**********************************
-class cParameterPaRos {
-  public:
-    bool load(const std::string name, bool        &value,
-              const bool print_default = true) const;
+    ros::init(argc, argv, "pcd_filter_pa_node");
+    cParameterPaNode pcd_filter;
 
-    bool load(const std::string name, std::string &value,
-              const bool print_default = true) const;
-    bool loadTopic(const std::string name, std::string &value,
-                   const bool print_default = true) const;
-    bool loadPath(const std::string name, std::string &value,
-                  const bool print_default = true) const;
+    ros::spin();
 
-    bool load(const std::string name, int         &value,
-              const bool print_default = true) const;
+    return 0;
+}
 
-    bool load(const std::string name, double      &value,
-              const bool print_default = true) const;
+//**************************[cParameterPaNode]*********************************
+cParameterPaNode::cParameterPaNode() {
 
+    cParameterPaRos paramloader;
+    std::string str_service = paramloader.resolveRessourcename("~/");
 
-    bool load(const std::string name, std::vector<bool       > &value,
-              const bool print_default = true) const;
+    // service for path substitution
+    ser_path_ = nh_.advertiseService( str_service + "substitutePath",
+      &cParameterPaNode::substitutePathCallbackSrv, this);
+    // service for ressource name substitution
+    ser_ressource_ = nh_.advertiseService(
+      str_service + "substituteRessource",
+      &cParameterPaNode::substituteNameCallbackSrv, this);
+}
 
-    bool load(const std::string name, std::vector<std::string> &value,
-              const bool print_default = true) const;
+//**************************[~cParameterPaNode]********************************
+cParameterPaNode::~cParameterPaNode() {
 
-    bool load(const std::string name, std::vector<int        > &value,
-              const bool print_default = true) const;
+}
 
-    bool load(const std::string name, std::vector<double     > &value,
-              const bool print_default = true) const;
+//**************************[substitutePathCallbackSrv]*************************
+bool cParameterPaNode::substitutePathCallbackSrv(
+  parameter_pa::ParameterPaString::Request  &req,
+  parameter_pa::ParameterPaString::Response &res) {
 
-    bool load(const std::string name, Eigen::MatrixXf &value,
-              const bool print_default = true) const;
+    std::string str = req.in_string;
+    res.ok = cParameterPaRos::replaceFindpack(str);
+    res.out_string = str;
 
-    static bool replaceFindpack(std::string &path);
-    static std::string resolveRessourcename(const std::string name);
-    static std::string boolToStr(const bool value);
+    return true;
+}
 
-    // deprecated function names, just for compatibility
-    // (starting after next ros-release, those names will
-    //  marked as deprecated)
-    // __attribute__ ((deprecated))
-    bool load_topic(const std::string name, std::string &value,
-                    const bool print_default = true) const;
-    // __attribute__ ((deprecated))
-    bool load_path(const std::string name, std::string &value,
-                   const bool print_default = true) const;
+//**************************[substituteNameCallbackSrv]*************************
+bool cParameterPaNode::substituteNameCallbackSrv(
+  parameter_pa::ParameterPaString::Request  &req,
+  parameter_pa::ParameterPaString::Response &res) {
 
-    //__attribute__ ((deprecated))
-    static bool replace_findpack(std::string &path);
-    //__attribute__ ((deprecated))
-    static void resolve_ressourcename(std::string &name);
-    //__attribute__ ((deprecated))
-    static std::string bool_to_str(const bool value);
-
-  private:
-    void loadSub(const std::string &n, const std::string &v,
-                 const bool p, const bool r) const;
-    static std::list<std::string> splitRessourcename(
-      const std::string name);
-
-    ros::NodeHandle nh_;
-};
-
-#endif // __PARAMETER_PA_ROS_H
+    res.out_string = cParameterPaRos::resolveRessourcename(req.in_string);
+    res.ok = true;
+    
+    return true;
+}

@@ -48,46 +48,46 @@
 
 // ros headers
 #include <ros/package.h>
-#include <XmlRpcValue.h>
+#include <xmlrpcpp/XmlRpcValue.h>
 
 // standard headers
 #include <sstream>
 
 //**************************[load - bool]**************************************
 bool cParameterPaRos::load (const std::string name,
-  bool &value,
-  const bool print_default) const {
+  bool &value, const bool print_default) const {
+
     bool result;
 
-    result = nh_.getParam(ros::names::resolve(name), value);
+    result = nh_.getParam(resolveRessourcename(name), value);
 
-    loadSub(name, bool_to_str(value), print_default, result);
+    loadSub(name, boolToStr(value), print_default, result);
 
     return result;
 }
 
 //**************************[load - string]************************************
 bool cParameterPaRos::load (const std::string name,
-  std::string &value,
-  const bool print_default) const {
+  std::string &value, const bool print_default) const {
+
     bool result;
 
-    result = nh_.getParam(ros::names::resolve(name), value);
+    result = nh_.getParam(resolveRessourcename(name), value);
 
     loadSub(name, value, print_default, result);
 
     return result;
 }
 
-//**************************[load_topic]***************************************
-bool cParameterPaRos::load_topic (const std::string name,
-  std::string &value,
-  const bool print_default) const {
+//**************************[loadTopic]****************************************
+bool cParameterPaRos::loadTopic (const std::string name,
+  std::string &value, const bool print_default) const {
+
     bool result;
 
-    result = nh_.getParam(ros::names::resolve(name), value);
+    result = nh_.getParam(resolveRessourcename(name), value);
     if (value != "") {
-        resolve_ressourcename(value);
+        resolveRessourcename(value);
     }
 
     loadSub(name, value, print_default, result);
@@ -95,14 +95,14 @@ bool cParameterPaRos::load_topic (const std::string name,
     return result;
 }
 
-//**************************[load_path]****************************************
-bool cParameterPaRos::load_path (const std::string name,
-  std::string &value,
-  const bool print_default) const {
+//**************************[loadPath]*****************************************
+bool cParameterPaRos::loadPath (const std::string name,
+  std::string &value, const bool print_default) const {
+
     bool result;
 
-    result = nh_.getParam(ros::names::resolve(name), value);
-    replace_findpack(value);
+    result = nh_.getParam(resolveRessourcename(name), value);
+    replaceFindpack(value);
 
     loadSub(name, value, print_default, result);
 
@@ -111,11 +111,11 @@ bool cParameterPaRos::load_path (const std::string name,
 
 //**************************[load - int]***************************************
 bool cParameterPaRos::load (const std::string name,
-  int &value,
-  const bool print_default) const {
+  int &value, const bool print_default) const {
+
     bool result;
 
-    result = nh_.getParam(ros::names::resolve(name), value);
+    result = nh_.getParam(resolveRessourcename(name), value);
 
     std::stringstream value_s;
     value_s << value;
@@ -126,11 +126,11 @@ bool cParameterPaRos::load (const std::string name,
 
 //**************************[load - double]************************************
 bool cParameterPaRos::load (const std::string name,
-  double &value,
-  const bool print_default) const {
+  double &value, const bool print_default) const {
+
     bool result;
 
-    result = nh_.getParam(ros::names::resolve(name), value);
+    result = nh_.getParam(resolveRessourcename(name), value);
 
     std::stringstream value_s;
     value_s << value;
@@ -141,20 +141,20 @@ bool cParameterPaRos::load (const std::string name,
 
 //**************************[load - vector<bool>]******************************
 bool cParameterPaRos::load (const std::string name,
-  std::vector<bool> &value,
-  const bool print_default) const {
+  std::vector<bool> &value, const bool print_default) const {
+
     bool result;
 
     std::vector<bool> value_temp;
-    result = nh_.getParam(ros::names::resolve(name), value_temp);
+    result = nh_.getParam(resolveRessourcename(name), value_temp);
     if (result) {value = value_temp;}
 
     std::stringstream value_s;
     value_s << "[";
     if (value.size() > 0) {
-        value_s << bool_to_str(value[0]);
+        value_s << boolToStr(value[0]);
         for (int i = 1; i < value.size(); i++) {
-            value_s << ", " << bool_to_str(value[i]);
+            value_s << ", " << boolToStr(value[i]);
         }
     }
     value_s << "]";
@@ -165,12 +165,12 @@ bool cParameterPaRos::load (const std::string name,
 
 //**************************[load - vector<string>]****************************
 bool cParameterPaRos::load (const std::string name,
-  std::vector<std::string> &value,
-  const bool print_default) const {
+  std::vector<std::string> &value, const bool print_default) const {
+
     bool result;
 
     std::vector<std::string> value_temp;
-    result = nh_.getParam(ros::names::resolve(name), value_temp);
+    result = nh_.getParam(resolveRessourcename(name), value_temp);
     if (result) {value = value_temp;}
 
     std::stringstream value_s;
@@ -189,12 +189,12 @@ bool cParameterPaRos::load (const std::string name,
 
 //**************************[load - vector<int>]*******************************
 bool cParameterPaRos::load (const std::string name,
-  std::vector<int> &value,
-  const bool print_default) const {
+  std::vector<int> &value, const bool print_default) const {
+
     bool result;
 
     std::vector<int> value_temp;
-    result = nh_.getParam(ros::names::resolve(name), value_temp);
+    result = nh_.getParam(resolveRessourcename(name), value_temp);
     if (result) {value = value_temp;}
 
     std::stringstream value_s;
@@ -213,12 +213,12 @@ bool cParameterPaRos::load (const std::string name,
 
 //**************************[load - vector<double>]****************************
 bool cParameterPaRos::load (const std::string name,
-  std::vector<double> &value,
-  const bool print_default) const {
+  std::vector<double> &value, const bool print_default) const {
+
     bool result;
 
     std::vector<double> value_temp;
-    result = nh_.getParam(ros::names::resolve(name), value_temp);
+    result = nh_.getParam(resolveRessourcename(name), value_temp);
     if (result) {value = value_temp;}
 
     std::stringstream value_s;
@@ -237,14 +237,14 @@ bool cParameterPaRos::load (const std::string name,
 
 //**************************[load - matrix]************************************
 bool cParameterPaRos::load (const std::string name,
-  Eigen::MatrixXf &value,
-  const bool print_default) const {
+  Eigen::MatrixXf &value, const bool print_default) const {
+
     bool result = true;
 
     Eigen::MatrixXf mat;
 
     XmlRpc::XmlRpcValue xml;
-    nh_.getParam(ros::names::resolve(name), xml);
+    nh_.getParam(resolveRessourcename(name), xml);
 
     // check type and minimum size
     if((xml.getType() != XmlRpc::XmlRpcValue::TypeArray) ||
@@ -312,29 +312,11 @@ bool cParameterPaRos::load (const std::string name,
     return result;
 }
 
-//**************************[loadSub]******************************************
-void cParameterPaRos::loadSub(const std::string &n, const std::string &v,
-  const bool p, const bool r) const {
-    std::string result;
-
-    if (r) {
-        result = "load parameter " + n + " (" + v + ")";
-    } else {
-        result = "parameter " + n + " not set";
-
-        if (p) {
-        result+= " (defaults to " + v + ")";
-        }
-    }
-
-    ROS_INFO_STREAM(result);
-}
-
-//**************************[replace_findpack]*********************************
-bool cParameterPaRos::replace_findpack(std::string &path) {
+//**************************[replaceFindpack]**********************************
+bool cParameterPaRos::replaceFindpack(std::string &path) {
 
     while(1) {
-        // check for string "$(find ...)
+        // check for string "$(find ...)"
         std::string::size_type start;
         start = (int) path.find("$(find ");
         if ((start < 0) || (start >= path.length())) {return true;}
@@ -376,19 +358,200 @@ bool cParameterPaRos::replace_findpack(std::string &path) {
         // replace
         path = path.substr(0,start) + replace + path.substr(end + 1);
     }
-
 }
 
-//**************************[resolve_ressourcename]****************************
-void cParameterPaRos::resolve_ressourcename(std::string &name) {
-    name = ros::names::resolve(name);
+//**************************[resolveRessourcename]*****************************
+std::string cParameterPaRos::resolveRessourcename(const std::string name) {
+
+    if (name ==  "") {return "";}
+
+    bool full_path = false;
+    bool end_with_slash = name[name.length()-1] == '/';
+    std::list<std::string> parts = splitRessourcename(name);
+
+    if (parts.empty()) {
+        return "";
+    }
+
+    if (parts.front() == "" ) { 
+        full_path = true;
+        parts.pop_front();
+    } else if (parts.front() == "." ) { 
+        parts.front() = "..";
+        parts.push_front("~");
+    }
+
+    std::list<std::string>::iterator iter = parts.begin();
+    while (iter != parts.end()) {
+
+        // check for expansion to full ressource name
+        if (((parts.front() == "~") || (parts.front() == "")) &&
+          (full_path == false)) {
+            
+            // get full ressource name (including node name)
+            std::list<std::string> temp = splitRessourcename(
+              ros::names::resolve("~"));
+            std::list<std::string>::iterator iter_temp = temp.end();
+            iter_temp--; // to point to last element (not beyond)
+
+            // remove current node name (if not wanted)
+            // This happens only if absolute ressource name is implicitly
+            // needed - e.g. by calling with "../xyz".
+            if (parts.front() != "~") { 
+                iter_temp--;  
+            }
+
+            // removing part, which was expanded
+            parts.pop_front();
+
+            for ( ; iter_temp != temp.end(); iter_temp--) {
+                parts.push_front(*iter_temp);
+            }
+
+            // updated variables
+            full_path = true;
+            iter = parts.begin();
+            continue;
+        }
+
+        // check for "" or "."
+        if ((*iter == "") or (*iter == ".")) {
+            iter = parts.erase(iter);
+            continue;
+        }
+
+        // check for "../"
+        if (*iter == "..") {
+            if (iter == parts.begin()) {
+                if (full_path) {
+                    // there is no higher ressource name then "/"
+                    // so a "/../xyz" will result in "/xyz"
+                    iter = parts.erase(iter);
+                    continue;
+                } else {
+                    // force full ressource name before continueing
+                    parts.push_front("");
+                    continue;
+                }
+            }
+            // remove last ressource name
+            iter--;
+            iter = parts.erase(iter);
+            iter = parts.erase(iter);
+            continue;
+        }
+
+        iter++;
+    }
+
+    // concate resulting string
+    std::string result;
+    if (full_path) { result = "/";}
+
+    if (parts.size() > 0) {
+        result+= parts.front();
+    }
+    for (iter = ++parts.begin() ; iter != parts.end(); iter++) {
+        result+= '/';
+        result+= *iter;
+    }
+
+    if (end_with_slash && (parts.size() > 0)) {
+        result+= '/';
+    }
+
+    return result;
 }
 
-//**************************[bool_to_str]**************************************
-std::string cParameterPaRos::bool_to_str(const bool value) {
+//**************************[boolToStr]****************************************
+std::string cParameterPaRos::boolToStr(const bool value) {
+
     if (value) {
         return "true";
     } else {
         return "false";
     }
+}
+
+//! ##### deprecated function names, just for compatibility #####
+
+//**************************[load_topic]***************************************
+bool cParameterPaRos::load_topic (const std::string name,
+  std::string &value, const bool print_default) const {
+
+    return loadTopic(name, value, print_default);
+}
+
+//**************************[load_path]****************************************
+bool cParameterPaRos::load_path (const std::string name,
+  std::string &value, const bool print_default) const {
+
+    return loadPath(name, value, print_default);
+}
+
+//**************************[replace_findpack]*********************************
+bool cParameterPaRos::replace_findpack(std::string &path) {
+
+     return replaceFindpack(path);
+}
+
+//**************************[resolve_ressourcename]****************************
+void cParameterPaRos::resolve_ressourcename(std::string &name) {
+
+    name = resolveRessourcename(name);
+}
+
+//**************************[bool_to_str]**************************************
+std::string cParameterPaRos::bool_to_str(const bool value) {
+
+    return boolToStr(value);
+}
+
+//! ##### private functions #####
+//**************************[loadSub]******************************************
+void cParameterPaRos::loadSub(const std::string &n, const std::string &v,
+  const bool p, const bool r) const {
+
+    std::string result;
+
+    if (r) {
+        result = "load parameter " + n + " (" + v + ")";
+    } else {
+        result = "parameter " + n + " not set";
+
+        if (p) {
+            result+= " (defaults to " + v + ")";
+        }
+    }
+
+    ROS_INFO_STREAM(result);
+}
+
+//**************************[splitRessourcename]*******************************
+std::list<std::string> cParameterPaRos::splitRessourcename(
+  const std::string name) {
+
+    std::list<std::string> result;
+    int count                  = 0; // number of parts (seperated by slashes)
+    std::string::size_type pos = 0; // current position within string
+
+    while(pos < name.length()) {
+        // check for string "/"
+        std::string::size_type end;
+        end = (int) name.find("/", pos);
+
+        if ((end < 0) || (end > name.length())) {
+            end = name.length();
+        }
+
+        if (pos < end) {
+            result.push_back(name.substr(pos, end - pos));
+        } else {
+            result.push_back("");
+        }
+            
+        pos = end + 1;
+    }
+
+    return result;
 }

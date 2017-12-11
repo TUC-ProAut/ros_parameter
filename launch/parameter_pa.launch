@@ -1,0 +1,7 @@
+<launch>
+
+    <!-- launching the node for resolving paths and ressource names -->
+    <node name="parameter_pa_node" pkg="parameter_pa"
+      type="parameter_pa_node" output="screen">
+    </node>
+</launch>

@@ -1,7 +1,7 @@
 /******************************************************************************
 *                                                                             *
-* parameter_pa_ros.h                                                          *
-* ==================                                                          *
+* parameter_pa_node.h                                                         *
+* ===================                                                         *
 *                                                                             *
 *******************************************************************************
 *                                                                             *
@@ -43,81 +43,56 @@
 *                                                                             *
 ******************************************************************************/
 
-#ifndef __PARAMETER_PA_ROS_H
-#define __PARAMETER_PA_ROS_H
+#ifndef __PARAMETER_PA_NODE_H
+#define __PARAMETER_PA_NODE_H
+
+// local headers
+#include "parameter_pa/parameter_pa_ros.h"
+#include "parameter_pa/ParameterPaString.h"
 
 // ros headers
 #include <ros/ros.h>
+
+#include <sensor_msgs/PointCloud2.h>
+#include <sensor_msgs/PointCloud.h>
+#include <sensor_msgs/LaserScan.h>
+#include <std_srvs/Empty.h>
+
+#include <tf/transform_listener.h>
 
 // standard headers
 #include <string>
 #include <vector>
 
-#include <eigen3/Eigen/Core>
+//**************************[main]*********************************************
+int main(int argc, char **argv);
 
-//**************************[cParameterPaRos]**********************************
-class cParameterPaRos {
+//**************************[cParameterPaNode]*********************************
+class cParameterPaNode : public cParameterPaRos {
   public:
-    bool load(const std::string name, bool        &value,
-              const bool print_default = true) const;
+    //! default constructor
+    cParameterPaNode();
 
-    bool load(const std::string name, std::string &value,
-              const bool print_default = true) const;
-    bool loadTopic(const std::string name, std::string &value,
-                   const bool print_default = true) const;
-    bool loadPath(const std::string name, std::string &value,
-                  const bool print_default = true) const;
+    //! default destructor
+    ~cParameterPaNode();
 
-    bool load(const std::string name, int         &value,
-              const bool print_default = true) const;
-
-    bool load(const std::string name, double      &value,
-              const bool print_default = true) const;
-
-
-    bool load(const std::string name, std::vector<bool       > &value,
-              const bool print_default = true) const;
-
-    bool load(const std::string name, std::vector<std::string> &value,
-              const bool print_default = true) const;
-
-    bool load(const std::string name, std::vector<int        > &value,
-              const bool print_default = true) const;
-
-    bool load(const std::string name, std::vector<double     > &value,
-              const bool print_default = true) const;
-
-    bool load(const std::string name, Eigen::MatrixXf &value,
-              const bool print_default = true) const;
-
-    static bool replaceFindpack(std::string &path);
-    static std::string resolveRessourcename(const std::string name);
-    static std::string boolToStr(const bool value);
-
-    // deprecated function names, just for compatibility
-    // (starting after next ros-release, those names will
-    //  marked as deprecated)
-    // __attribute__ ((deprecated))
-    bool load_topic(const std::string name, std::string &value,
-                    const bool print_default = true) const;
-    // __attribute__ ((deprecated))
-    bool load_path(const std::string name, std::string &value,
-                   const bool print_default = true) const;
-
-    //__attribute__ ((deprecated))
-    static bool replace_findpack(std::string &path);
-    //__attribute__ ((deprecated))
-    static void resolve_ressourcename(std::string &name);
-    //__attribute__ ((deprecated))
-    static std::string bool_to_str(const bool value);
-
-  private:
-    void loadSub(const std::string &n, const std::string &v,
-                 const bool p, const bool r) const;
-    static std::list<std::string> splitRessourcename(
-      const std::string name);
-
+  protected:
+    //! node handler for topic subscription and advertising
     ros::NodeHandle nh_;
+
+    //! service for path substitution
+    ros::ServiceServer ser_path_;
+    //! service for ressource name substitution
+    ros::ServiceServer ser_ressource_;
+
+    //! callback function for path substitution
+    bool substitutePathCallbackSrv(
+        parameter_pa::ParameterPaString::Request  &req,
+        parameter_pa::ParameterPaString::Response &res);
+    //! callback function for ressource name substitution
+    bool substituteNameCallbackSrv(
+        parameter_pa::ParameterPaString::Request  &req,
+        parameter_pa::ParameterPaString::Response &res);
 };
 
-#endif // __PARAMETER_PA_ROS_H
+#endif // __PARAMETER_PA_NODE_H

@@ -1,0 +1,4 @@
+string in_string
+---
+bool ok
+string out_string

@@ -1,21 +1,26 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>parameter_pa</name>
-  <version>1.1.0</version>
-  <description>ProAut parameter package</description>
+    <name>parameter_pa</name>
+    <version>1.1.0</version>
+    <description>ProAut parameter package</description>
+    <maintainer email="wepet@hrz.tu-chemnitz.de">Peter Weissig</maintainer>
+    <license>BSD</license>
 
-  <maintainer email="wepet@hrz.tu-chemnitz.de">Peter Weissig</maintainer>
-
-  <license>BSD</license>
-
-  <buildtool_depend>catkin</buildtool_depend>
-
-  <depend>roscpp</depend>
-  <depend>roslib</depend>
-  <depend>cmake_modules</depend>
-  <depend>eigen</depend>
+    <buildtool_depend>catkin</buildtool_depend>
 
 
-  <doc_depend>doxygen</doc_depend>
+    <depend>roscpp</depend>
+    <depend>roslib</depend>
+
+    <depend>cmake_modules</depend>
+    <depend>eigen</depend>
+
+
+    <build_depend>message_generation</build_depend>
+    <build_export_depend>message_runtime</build_export_depend>
+    <exec_depend>message_runtime</exec_depend>
+
+
+    <doc_depend>doxygen</doc_depend>
 
 </package>
