@@ -53,17 +53,6 @@
 // ros headers
 #include <ros/ros.h>
 
-#include <sensor_msgs/PointCloud2.h>
-#include <sensor_msgs/PointCloud.h>
-#include <sensor_msgs/LaserScan.h>
-#include <std_srvs/Empty.h>
-
-#include <tf/transform_listener.h>
-
-// standard headers
-#include <string>
-#include <vector>
-
 //**************************[main]*********************************************
 int main(int argc, char **argv);
 
