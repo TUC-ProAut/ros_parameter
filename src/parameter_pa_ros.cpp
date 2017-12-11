@@ -48,7 +48,13 @@
 
 // ros headers
 #include <ros/package.h>
-#include <xmlrpcpp/XmlRpcValue.h>
+#if ROS_VERSION_MINIMUM(1, 12, 0)
+    // everything after ros indigo
+    #include <xmlrpcpp/XmlRpcValue.h>
+#else //#if ROS_VERSION_MINIMUM(1, 12, 0)
+    // only for ros indigo
+    #include <XmlRpcValue.h>
+#endif //#if ROS_VERSION_MINIMUM(1, 12, 0)
 
 // standard headers
 #include <sstream>
