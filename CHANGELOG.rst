@@ -2,6 +2,12 @@
 Changelog for package parameter_pa
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.2.1 (2017-12-14)
+------------------
+* bugfixed loadTopic (loaded topic was not resolved)
+* bugfixed documentation (some typos)
+* Contributors: Peter Weissig
+
 1.2.0 (2017-12-11)
 ------------------
 * removed unnecessary headers
