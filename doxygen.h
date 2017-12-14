@@ -16,15 +16,15 @@
  * Additionaly, there are two more dedicated load functions: <em>load_path()</em> and
  * <em>load_topic()</em>. Both are basically loading a simple string from the parameter
  * server as descript above. Furthermore the strings are specificly manipulated:
- * 
+ *
  * @b load_path() \n
  * Every "$(find xyz)" will be replaced with the path of package xyz.
- * 
+ *
  * @b load_topic() \n
  * Names are resolved with additional operators.
- * 
+ *
  * For these examples assume that ROS\_NAMESPACE is set to "/name/space" and that the nodes' name is "parameter\_pa\_node"
- * 
+ *
  * Regular ressource names (<em>no change</em>):
  * in_string      | out_string     | comment
  * ---------------|----------------|--------
@@ -36,47 +36,47 @@
  * /ressource/    | /ressource/    | absolute name ending with slash
  * /ns/ressource  | /ns/ressource  | absolute name with namespace
  * /ns/ressource/ | /ns/ressource/ | absolute name with namespace ending with slash
- * 
+ *
  * Private ressource names (<em>~/</em>):
- * in_string       | out_string                                    | comment
- * ----------------|-----------------------------------------------|--------
- * ~               | /name/space/parameter\_pa\_node               | private namespace
- * ~/              | /name/space/parameter\_pa\_node/              | private namespace ending with slash
- * ~/ressource     | /name/space/parameter\_pa\_node/ressource     | private namespace with relative name
- * ~/ns/ressource/ | /name/space/parameter\_pa\_node/ns/ressource/ | private namespace with relative name and relative namespace ending in slash
- * /abc/~/xyz      | Error                                         | no private namespace within absolute name allowed
- * 
+ * in_string       | out_string                                  | comment
+ * ----------------|---------------------------------------------|--------
+ * ~               | /name/space/parameter_pa_node               | private namespace
+ * ~/              | /name/space/parameter_pa_node/              | private namespace ending with slash
+ * ~/ressource     | /name/space/parameter_pa_node/ressource     | private namespace with relative name
+ * ~/ns/ressource/ | /name/space/parameter_pa_node/ns/ressource/ | private namespace with relative name and relative namespace ending in slash
+ * /abc/~/xyz      | Error                                       | no private namespace within absolute name allowed
+ *
  * Locale ressource names (<em>./</em>):
  * in_string       | out_string                | comment
  * ----------------|---------------------------|--------
  * .               | /name/space               | local namespace
  * ./              | /name/space/              | local namespace ending with slash
  * ./ressource/    | /name/space/ressource/    | local namespace with relative name ending in slash
- * ./ns/ressource  | /name/space/ns/ressource  | local namespace with relative name and relative namespace 
+ * ./ns/ressource  | /name/space/ns/ressource  | local namespace with relative name and relative namespace
  * /abc/./xyz      | /abc/xyz                  | local namespace within absolute name
- * 
+ *
  * Previous ressource names (<em>../</em>):
  * in_string       | out_string                | comment
  * ----------------|---------------------------|--------
  * ..              | /name                     | previous namespace
  * ../             | /name/                    | previous namespace ending with slash
  * ../ressource/   | /name/ressource/          | previous namespace with relative name ending in slash
- * ../ns/ressource | /name/ns/ressource        | previous namespace with relative name and relative namespace 
+ * ../ns/ressource | /name/ns/ressource        | previous namespace with relative name and relative namespace
  * /abc/def/../xyz | /abc/xyz                  | previous namespace within absolute name
- * 
+ *
  * Removal of double slashes:
  * in_string      | out_string     | comment
  * ---------------|----------------|--------
  * ressource//    | ressource/     | relative name ending with slash
  * //ns/ressource | /ns/ressource  | absolute name with namespace
- * 
+ *
  * More examples:
  * in_string                         | out_string
  * ----------------------------------|-----------
- * ~/abc/.//def/../ns//ressource/    | /name/space/parameter\_pa\_node/abc/ns/ressource
+ * ~/abc/.//def/../ns//ressource/    | /name/space/parameter_pa_node/abc/ns/ressource/
  * ns//.././..//ressource            | /name/space/ressource
  * ../../../../../../ressource/      | /ressource/
- * 
+ *
  *
  * @section example_sec Example
  *

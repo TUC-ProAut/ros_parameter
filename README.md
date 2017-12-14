@@ -9,7 +9,7 @@ The main idea is to simplify the handling of parameters, which can be set to def
 The main _load()_ function can handle bool, int, double and string - all as single values and as vectors. Also matrices of double (float) can be loaded.
 
 Additionaly, there are two more dedicated load functions: _load_path()_ and _load_topic()_. Both are basically loading a simple string from the parameter server as descript above. Furthermore the strings are specificly manipulated:
-### load_path() 
+### load_path()
 Every "$(find xyz)" will be replaced with the path of package xyz.
 
 ### load_topic()
@@ -47,7 +47,7 @@ in_string       | out_string                | comment
 .               | /name/space               | local namespace
 ./              | /name/space/              | local namespace ending with slash
 ./ressource/    | /name/space/ressource/    | local namespace with relative name ending in slash
-./ns/ressource  | /name/space/ns/ressource  | local namespace with relative name and relative namespace 
+./ns/ressource  | /name/space/ns/ressource  | local namespace with relative name and relative namespace
 /abc/./xyz      | /abc/xyz                  | local namespace within absolute name
 
 Previous ressource names (__../__):
@@ -57,7 +57,7 @@ in_string       | out_string                | comment
 ..              | /name                     | previous namespace
 ../             | /name/                    | previous namespace ending with slash
 ../ressource/   | /name/ressource/          | previous namespace with relative name ending in slash
-../ns/ressource | /name/ns/ressource        | previous namespace with relative name and relative namespace 
+../ns/ressource | /name/ns/ressource        | previous namespace with relative name and relative namespace
 /abc/def/../xyz | /abc/xyz                  | previous namespace within absolute name
 
 Removal of double slashes:
@@ -71,7 +71,7 @@ More examples:
 
 in_string                         | out_string
 ----------------------------------|------------
-~/abc/.//def/../ns//ressource/    | /name/space/parameter\_pa\_node/abc/ns/ressource
+~/abc/.//def/../ns//ressource/    | /name/space/parameter\_pa\_node/abc/ns/ressource/
 ns//.././..//ressource            | /name/space/ressource
 ../../../../../../ressource/      | /ressource/
 
@@ -102,7 +102,7 @@ Source code at github:
 
 ## ROS Build-Status and Documentation
 
-ROS-Distribution | Build-Status | Documentation      
+ROS-Distribution | Build-Status | Documentation
 -----------------|--------------|---------------
 Indigo | [![Build Status](http://build.ros.org/buildStatus/icon?job=Idev__parameter_pa__ubuntu_trusty_amd64)](http://build.ros.org/job/Idev__parameter_pa__ubuntu_trusty_amd64/) | [docs.ros.org](http://docs.ros.org/indigo/api/parameter_pa/html/index.html)
 Jade | EOL May 2017 | [docs.ros.org](http://docs.ros.org/jade/api/parameter_pa/html/index.html)

@@ -90,13 +90,17 @@ bool cParameterPaRos::loadTopic (const std::string name,
   std::string &value, const bool print_default) const {
 
     bool result;
+    std::string value_resolved;
 
     result = nh_.getParam(resolveRessourcename(name), value);
-    if (value != "") {
-        resolveRessourcename(value);
-    }
+    value_resolved = resolveRessourcename(value);
 
-    loadSub(name, value, print_default, result);
+    if (value_resolved == value) {
+        loadSub(name, value, print_default, result);
+    } else {
+        loadSub(name, value + " == " + value_resolved, print_default, result);
+        value = value_resolved;
+    }
 
     return result;
 }
@@ -379,10 +383,10 @@ std::string cParameterPaRos::resolveRessourcename(const std::string name) {
         return "";
     }
 
-    if (parts.front() == "" ) { 
+    if (parts.front() == "" ) {
         full_path = true;
         parts.pop_front();
-    } else if (parts.front() == "." ) { 
+    } else if (parts.front() == "." ) {
         parts.front() = "..";
         parts.push_front("~");
     }
@@ -393,7 +397,7 @@ std::string cParameterPaRos::resolveRessourcename(const std::string name) {
         // check for expansion to full ressource name
         if (((parts.front() == "~") || (parts.front() == "")) &&
           (full_path == false)) {
-            
+
             // get full ressource name (including node name)
             std::list<std::string> temp = splitRessourcename(
               ros::names::resolve("~"));
@@ -403,8 +407,8 @@ std::string cParameterPaRos::resolveRessourcename(const std::string name) {
             // remove current node name (if not wanted)
             // This happens only if absolute ressource name is implicitly
             // needed - e.g. by calling with "../xyz".
-            if (parts.front() != "~") { 
-                iter_temp--;  
+            if (parts.front() != "~") {
+                iter_temp--;
             }
 
             // removing part, which was expanded
@@ -555,7 +559,7 @@ std::list<std::string> cParameterPaRos::splitRessourcename(
         } else {
             result.push_back("");
         }
-            
+
         pos = end + 1;
     }
 
