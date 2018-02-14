@@ -87,7 +87,7 @@
 [ INFO] [1499357951.544867951]: load parameter ~/debugging (true)@endverbatim
  *
  * Here is the related source code, which is taken from
- * <a href="https://github.com/peterweissig/ros_pcdfilter/blob/master/src/pcdfilter_pa_node.cpp">pcdfilter_pa</a>:
+ * <a href="https://github.com/TUC-ProAut/ros_pcdfilter/blob/master/src/pcdfilter_pa_node.cpp">pcdfilter_pa</a>:
  * @verbatim
 cParameterPaRos paramloader;
 
@@ -99,7 +99,7 @@ paramloader.load("~/debugging"        , rosparams_.debugging_        );@endverba
  * @section links_sec Links
  *
  * Source code at github:
- *  + https://github.com/peterweissig/ros_parameter
+ *  + https://github.com/TUC-ProAut/ros_parameter
  *
  * @section doc_sec ROS Documentation
  *

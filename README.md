@@ -85,7 +85,7 @@ A typical output looks like this:
 [ INFO] [1499357951.544867951]: load parameter ~/debugging (true)
 ```
 
-Here is the related source code, which is taken from [pcdfilter_pa](https://github.com/peterweissig/ros_pcdfilter/blob/master/src/pcdfilter_pa_node.cpp):
+Here is the related source code, which is taken from [pcdfilter_pa](https://github.com/TUC-ProAut/ros_pcdfilter/blob/master/src/pcdfilter_pa_node.cpp):
 ```
 cParameterPaRos paramloader;
 
@@ -98,7 +98,7 @@ paramloader.load("~/debugging"        , rosparams_.debugging_        );
 
 Source code at github:
 
-> https://github.com/peterweissig/ros_parameter
+> https://github.com/TUC-ProAut/ros_parameter
 
 ## ROS Build-Status and Documentation
 
