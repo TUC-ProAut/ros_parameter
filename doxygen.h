@@ -10,20 +10,37 @@
  * the server or if its default value is used. In each case, the final value
  * is printed, too.
  *
+ *
+ * @section node_sec Node
+ * @verbatim
+rosrun parameter_pa parameter_pa_node
+roslaunch parameter_pa parameter_pa.launch
+@endverbatim
+ *
+ * <b>Services:</b>
+ *
+ * Service Name            | Type                                                                                                                  | Description
+ * ------------------------|-----------------------------------------------------------------------------------------------------------------------|---------------------------------
+ * "~/substitutePath"      | <a href="https://github.com/TUC-ProAut/ros_parameter/blob/master/srv/ParameterPaString.srv">ParameterPaString.srv</a> | Replaces each "$(find xyz)" with the corresponding path - this is similar to calling <em>loadPath()</em>.
+ * "~/substituteRessource" | <a href="https://github.com/TUC-ProAut/ros_parameter/blob/master/srv/ParameterPaString.srv">ParameterPaString.srv</a> | Resolves ressource name - this is similar to calling <em>loadTopic()</em>.
+ *
+ *
+ * @section func_sec Functions
+ *
  * The main <em>load()</em> function can handle bool, int, double and string - all as
  * single values and as vectors. Also matrices of double (float) can be loaded.
  *
- * Additionaly, there are two more dedicated load functions: <em>load_path()</em> and
- * <em>load_topic()</em>. Both are basically loading a simple string from the parameter
+ * Additionaly, there are two more dedicated load functions: <em>loadPath()</em> and
+ * <em>loadTopic()</em>. Both are basically loading a simple string from the parameter
  * server as descript above. Furthermore the strings are specificly manipulated:
  *
- * @b load_path() \n
+ * @b loadPath() \n
  * Every "$(find xyz)" will be replaced with the path of package xyz.
  *
- * @b load_topic() \n
+ * @b loadTopic() \n
  * Names are resolved with additional operators.
  *
- * For these examples assume that ROS\_NAMESPACE is set to "/name/space" and that the nodes' name is "parameter\_pa\_node"
+ * For these examples assume that ROS_NAMESPACE is set to "/name/space" and that the nodes' name is "parameter_pa_node"
  *
  * Regular ressource names (<em>no change</em>):
  * in_string      | out_string     | comment
@@ -96,10 +113,16 @@ paramloader.load("~/tf_lookup_time"   , filters_.tf_lookup_time_     );
 paramloader.load("~/buffer_pointcloud", rosparams_.buffer_pointcloud_);
 paramloader.load("~/debugging"        , rosparams_.debugging_        );@endverbatim
  *
+ *
  * @section links_sec Links
  *
  * Source code at github:
  *  + https://github.com/TUC-ProAut/ros_parameter
+ *
+ * ROS packages:
+ *  + ros-indigo-parameter-pa
+ *  + ros-kinetic-parameter-pa
+ *  + ros-lunar-parameter-pa
  *
  * @section doc_sec ROS Documentation
  *
