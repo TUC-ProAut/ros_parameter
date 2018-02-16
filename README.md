@@ -14,12 +14,13 @@ rosrun parameter_pa parameter_pa_node
 roslaunch parameter_pa parameter_pa.launch
 ```
 
+
 ### Services:
 
-Service Name            | Type                                                                                                       | Description
-------------------------|------------------------------------------------------------------------------------------------------------|---------------------------------
-"~/substitutePath"      | [ParameterPaString.srv](https://github.com/TUC-ProAut/ros_parameter/blob/master/srv/ParameterPaString.srv) | Replaces each "$(find xyz)" with the corresponding path - this is similar to calling _loadPath_().
-"~/substituteRessource" | [ParameterPaString.srv](https://github.com/TUC-ProAut/ros_parameter/blob/master/srv/ParameterPaString.srv) | Resolves ressource name - this is similar to calling _loadTopic_().
+Service Name            | Type                                                                                                                | Description
+------------------------|---------------------------------------------------------------------------------------------------------------------|---------------------------------
+"~/substitutePath"      | [parameter_pa/ParameterPaString](https://github.com/TUC-ProAut/ros_parameter/blob/master/srv/ParameterPaString.srv) | Replaces each "$(find xyz)" with the corresponding path - this is similar to calling _loadPath_().
+"~/substituteRessource" | [parameter_pa/ParameterPaString](https://github.com/TUC-ProAut/ros_parameter/blob/master/srv/ParameterPaString.srv) | Resolves ressource name - this is similar to calling _loadTopic_().
 
 
 ## Functions
@@ -115,7 +116,7 @@ paramloader.load("~/debugging"        , rosparams_.debugging_        );
 ```
 
 
-## Links
+## Links and packages
 
 Source code at github:
 > https://github.com/TUC-ProAut/ros_parameter
@@ -128,9 +129,9 @@ ROS packages:
 
 ## ROS Build-Status and Documentation
 
-ROS-Distribution | Build-Status | Documentation
------------------|--------------|---------------
-Indigo | [![Build Status](http://build.ros.org/buildStatus/icon?job=Idev__parameter_pa__ubuntu_trusty_amd64)](http://build.ros.org/job/Idev__parameter_pa__ubuntu_trusty_amd64/) | [docs.ros.org](http://docs.ros.org/indigo/api/parameter_pa/html/index.html)
-Jade | EOL May 2017 | [docs.ros.org](http://docs.ros.org/jade/api/parameter_pa/html/index.html)
-Kinetic | [![Build Status](http://build.ros.org/buildStatus/icon?job=Kdev__parameter_pa__ubuntu_xenial_amd64)](http://build.ros.org/job/Kdev__parameter_pa__ubuntu_xenial_amd64/) | [docs.ros.org](http://docs.ros.org/kinetic/api/parameter_pa/html/index.html)
-Lunar | [![Build Status](http://build.ros.org/buildStatus/icon?job=Ldev__parameter_pa__ubuntu_xenial_amd64)](http://build.ros.org/job/Ldev__parameter_pa__ubuntu_xenial_amd64/) | [docs.ros.org](http://docs.ros.org/lunar/api/parameter_pa/html/index.html)
+ROS-Distribution | Build-Status                                                                                                                                                            | Documentation
+-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------
+Indigo           | [![Build Status](http://build.ros.org/buildStatus/icon?job=Idev__parameter_pa__ubuntu_trusty_amd64)](http://build.ros.org/job/Idev__parameter_pa__ubuntu_trusty_amd64/) | [docs.ros.org](http://docs.ros.org/indigo/api/parameter_pa/html/index.html)
+Jade             | EOL May 2017                                                                                                                                                            | [docs.ros.org](http://docs.ros.org/jade/api/parameter_pa/html/index.html)
+Kinetic          | [![Build Status](http://build.ros.org/buildStatus/icon?job=Kdev__parameter_pa__ubuntu_xenial_amd64)](http://build.ros.org/job/Kdev__parameter_pa__ubuntu_xenial_amd64/) | [docs.ros.org](http://docs.ros.org/kinetic/api/parameter_pa/html/index.html)
+Lunar            | [![Build Status](http://build.ros.org/buildStatus/icon?job=Ldev__parameter_pa__ubuntu_xenial_amd64)](http://build.ros.org/job/Ldev__parameter_pa__ubuntu_xenial_amd64/) | [docs.ros.org](http://docs.ros.org/lunar/api/parameter_pa/html/index.html)

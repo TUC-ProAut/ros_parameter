@@ -19,10 +19,10 @@ roslaunch parameter_pa parameter_pa.launch
  *
  * <b>Services:</b>
  *
- * Service Name            | Type                                                                                                                  | Description
- * ------------------------|-----------------------------------------------------------------------------------------------------------------------|---------------------------------
- * "~/substitutePath"      | <a href="https://github.com/TUC-ProAut/ros_parameter/blob/master/srv/ParameterPaString.srv">ParameterPaString.srv</a> | Replaces each "$(find xyz)" with the corresponding path - this is similar to calling <em>loadPath()</em>.
- * "~/substituteRessource" | <a href="https://github.com/TUC-ProAut/ros_parameter/blob/master/srv/ParameterPaString.srv">ParameterPaString.srv</a> | Resolves ressource name - this is similar to calling <em>loadTopic()</em>.
+ * Service Name            | Type                                                                                                                           | Description
+ * ------------------------|--------------------------------------------------------------------------------------------------------------------------------|---------------------------------
+ * "~/substitutePath"      | <a href="https://github.com/TUC-ProAut/ros_parameter/blob/master/srv/ParameterPaString.srv">parameter_pa/ParameterPaString</a> | Replaces each "$(find xyz)" with the corresponding path - this is similar to calling <em>loadPath()</em>.
+ * "~/substituteRessource" | <a href="https://github.com/TUC-ProAut/ros_parameter/blob/master/srv/ParameterPaString.srv">parameter_pa/ParameterPaString</a> | Resolves ressource name - this is similar to calling <em>loadTopic()</em>.
  *
  *
  * @section func_sec Functions
@@ -114,7 +114,7 @@ paramloader.load("~/buffer_pointcloud", rosparams_.buffer_pointcloud_);
 paramloader.load("~/debugging"        , rosparams_.debugging_        );@endverbatim
  *
  *
- * @section links_sec Links
+ * @section links_sec Links and packages
  *
  * Source code at github:
  *  + https://github.com/TUC-ProAut/ros_parameter
@@ -123,6 +123,7 @@ paramloader.load("~/debugging"        , rosparams_.debugging_        );@endverba
  *  + ros-indigo-parameter-pa
  *  + ros-kinetic-parameter-pa
  *  + ros-lunar-parameter-pa
+ *
  *
  * @section doc_sec ROS Documentation
  *
