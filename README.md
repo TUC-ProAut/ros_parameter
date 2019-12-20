@@ -2,9 +2,13 @@
 
 ## Introduction
 
-This is a simple helper-package for loading variables from the parameter server.
+This is a simple helper-package for loading variables from the parameter
+server.
 
-The main idea is to simplify the handling of parameters, which can be set to default values. The _load()_ function will print if a parameter is loaded from the server or if its default value is used. In each case, the final value is printed, too.
+The main idea is to simplify the handling of parameters, which can be set
+to default values. The _load()_ function will print if a parameter is
+loaded from the server or if its default value is used. In each case, the
+final value is printed, too.
 
 
 ## Node
@@ -25,9 +29,13 @@ Service Name            | Type                                                  
 
 ## Functions
 
-The main _load()_ function can handle bool, int, double and string - all as single values and as vectors. Also matrices of double (float) can be loaded.
+The main _load()_ function can handle bool, int, double and string - all as
+single values and as vectors. Also matrices of double (float) can be loaded.
 
-Additionaly, there are two more dedicated load functions: _loadPath()_ and _loadTopic()_. Both are basically loading a simple string from the parameter server as descript above. Furthermore the strings are specificly manipulated:
+Additionaly, there are two more dedicated load functions: _loadPath()_
+and _loadTopic()_. Both are basically loading a simple string from the
+parameter server as descript above. Furthermore the strings are specificly
+manipulated:
 
 ### loadPath()
 Every "$(find xyz)" will be replaced with the path of package xyz.
@@ -35,7 +43,8 @@ Every "$(find xyz)" will be replaced with the path of package xyz.
 ### loadTopic()
 Names are resolved with additional operators.
 
-For these examples assume that ROS\_NAMESPACE is set to "/name/space" and that the nodes' name is "parameter_pa_node"
+For these examples assume that ROS\_NAMESPACE is set to "/name/space" and
+that the nodes' name is "parameter_pa_node"
 
 #### Regular ressource names
 
