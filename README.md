@@ -35,9 +35,9 @@ Every "$(find xyz)" will be replaced with the path of package xyz.
 ### loadTopic()
 Names are resolved with additional operators.
 
-For these examples assume that ROS\_NAMESPACE is set to "/name/space" and that the nodes' name is "parameter\_pa\_node"
+For these examples assume that ROS\_NAMESPACE is set to "/name/space" and that the nodes' name is "parameter_pa_node"
 
-Regular ressource names (_no change_):
+#### Regular ressource names
 
 in_string      | out_string     | comment
 ---------------|----------------|---------
@@ -50,7 +50,7 @@ ns/ressource/  | ns/ressource/  | relative name with namespace ending with slash
 /ns/ressource  | /ns/ressource  | absolute name with namespace
 /ns/ressource/ | /ns/ressource/ | absolute name with namespace ending with slash
 
-Private ressource names (__~/__):
+#### Private ressource names
 
 in_string       | out_string                                    | comment
 ----------------|-----------------------------------------------|---------
@@ -60,7 +60,7 @@ in_string       | out_string                                    | comment
 ~/ns/ressource/ | /name/space/parameter\_pa\_node/ns/ressource/ | private namespace with relative name and relative namespace ending in slash
 /abc/~/xyz      | Error                                         | no private namespace within absolute name allowed
 
-Locale ressource names (__./__):
+#### Locale ressource names
 
 in_string       | out_string                | comment
 ----------------|---------------------------|---------
@@ -70,7 +70,7 @@ in_string       | out_string                | comment
 ./ns/ressource  | /name/space/ns/ressource  | local namespace with relative name and relative namespace
 /abc/./xyz      | /abc/xyz                  | local namespace within absolute name
 
-Previous ressource names (__../__):
+#### Previous ressource names
 
 in_string       | out_string                | comment
 ----------------|---------------------------|---------
@@ -80,14 +80,14 @@ in_string       | out_string                | comment
 ../ns/ressource | /name/ns/ressource        | previous namespace with relative name and relative namespace
 /abc/def/../xyz | /abc/xyz                  | previous namespace within absolute name
 
-Removal of double slashes:
+#### Removal of double slashes
 
 in_string      | out_string     | comment
 ---------------|----------------|---------
 ressource//    | ressource/     | relative name ending with slash
 //ns/ressource | /ns/ressource  | absolute name with namespace
 
-More examples:
+#### More examples
 
 in_string                         | out_string
 ----------------------------------|------------
@@ -96,7 +96,7 @@ ns//.././..//ressource            | /name/space/ressource
 ../../../../../../ressource/      | /ressource/
 
 
-## Example
+## Example Usage
 
 A typical output looks like this:
 ```
@@ -118,20 +118,19 @@ paramloader.load("~/debugging"        , rosparams_.debugging_        );
 
 ## Links and packages
 
-Source code at github:
-> https://github.com/TUC-ProAut/ros_parameter
+### Source code at github
+https://github.com/TUC-ProAut/ros_parameter
 
-ROS packages:
-> ros-indigo-parameter-pa
-> ros-kinetic-parameter-pa
-> ros-lunar-parameter-pa
+### ROS packages
+ros-kinetic-parameter-pa
 
 
 ## ROS Build-Status and Documentation
 
 ROS-Distribution | Build-Status                                                                                                                                                            | Documentation
 -----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------
-Indigo           | [![Build Status](http://build.ros.org/buildStatus/icon?job=Idev__parameter_pa__ubuntu_trusty_amd64)](http://build.ros.org/job/Idev__parameter_pa__ubuntu_trusty_amd64/) | [docs.ros.org](http://docs.ros.org/indigo/api/parameter_pa/html/index.html)
-Jade             | EOL May 2017                                                                                                                                                            | [docs.ros.org](http://docs.ros.org/jade/api/parameter_pa/html/index.html)
-Kinetic          | [![Build Status](http://build.ros.org/buildStatus/icon?job=Kdev__parameter_pa__ubuntu_xenial_amd64)](http://build.ros.org/job/Kdev__parameter_pa__ubuntu_xenial_amd64/) | [docs.ros.org](http://docs.ros.org/kinetic/api/parameter_pa/html/index.html)
-Lunar            | [![Build Status](http://build.ros.org/buildStatus/icon?job=Ldev__parameter_pa__ubuntu_xenial_amd64)](http://build.ros.org/job/Ldev__parameter_pa__ubuntu_xenial_amd64/) | [docs.ros.org](http://docs.ros.org/lunar/api/parameter_pa/html/index.html)
+Indigo           | EOL April 2019                                                                                                                                                          | [docs.ros.org/indigo](http://docs.ros.org/indigo/api/parameter_pa/html/index.html)
+Jade             | EOL May 2017                                                                                                                                                            | [docs.ros.org/jade](http://docs.ros.org/jade/api/parameter_pa/html/index.html)
+Kinetic          | [![Build Status](http://build.ros.org/buildStatus/icon?job=Kdev__parameter_pa__ubuntu_xenial_amd64)](http://build.ros.org/job/Kdev__parameter_pa__ubuntu_xenial_amd64/) | [docs.ros.org/kinetic](http://docs.ros.org/kinetic/api/parameter_pa/html/index.html)
+Lunar            | EOL May 2019                                                                                                                                                            | [docs.ros.org/lunar](http://docs.ros.org/lunar/api/parameter_pa/html/index.html)
+Melodic          | upcoming                                                                                                                                                                | [docs.ros.org/melodic](http://docs.ros.org/melodic/api/parameter_pa/html/index.html)
