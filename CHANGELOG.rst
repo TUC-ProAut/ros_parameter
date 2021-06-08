@@ -2,8 +2,8 @@
 Changelog for package parameter_pa
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.2.2 (2021-06-08)
+------------------
 * updated documentation
   + updated README.md
   + added rosdoc.yaml
