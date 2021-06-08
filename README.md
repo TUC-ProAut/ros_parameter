@@ -133,6 +133,9 @@ https://github.com/TUC-ProAut/ros_parameter
 ### ROS packages
 ros-kinetic-parameter-pa
 
+ros-melodic-parameter-pa _(upcoming)_
+
+ros-noetic-parameter-pa _(upcoming)_
 
 ## ROS Build-Status and Documentation
 
