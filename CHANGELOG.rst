@@ -2,6 +2,18 @@
 Changelog for package parameter_pa
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* updated documentation
+  + updated README.md
+  + added rosdoc.yaml
+  + removed doxygen.h
+* updated year of copyright
+* updated gitignore-file
+* updated files to new repository (only changed documentation and license)
+  moved from github.com/peterweissig/ros_parameter to github.com/TUC-ProAut/ros_parameter
+* Contributors: Peter Weissig
+
 1.2.1 (2017-12-14)
 ------------------
 * bugfixed loadTopic (loaded topic was not resolved)
