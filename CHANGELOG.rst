@@ -2,6 +2,11 @@
 Changelog for package parameter_pa
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* bumped cmake Version to 3.0.2 to avoid CMP0048
+* Contributors: Peter Weissig
+
 1.2.2 (2021-06-08)
 ------------------
 * updated documentation
